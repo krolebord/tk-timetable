@@ -1,0 +1,15 @@
+---
+import { Icon } from 'astro-icon';
+import PreferencesToggle from "./preferences/PreferencesToggle.svelte";
+---
+
+<header class="sticky top-0 z-40 backdrop-blur lg:border-b lg:border-slate-900/10 dark:border-slate-50/[0.06] bg-white/95 supports-backdrop-blur:bg-white/60 dark:bg-transparent">
+  <div class="px-4 py-4 border-b border-slate-900/10 lg:px-8 lg:border-0 dark:border-slate-300/10">
+    <div class="flex flex-row items-center justify-between">
+      <a href="/">TK31 Timetable</a>
+      <PreferencesToggle client:load>
+        <Icon name="mdi:cog-outline" size={24} class="text-blue-400" />
+      </PreferencesToggle>
+    </div>
+  </div>
+</header>

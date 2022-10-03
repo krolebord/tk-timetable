@@ -1,0 +1,30 @@
+---
+import '/src/styles/tailwindBase.css';
+
+export interface Props {
+	title: string;
+	class?: string;
+}
+
+const { title, class: bodyClass } = Astro.props;
+---
+
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width" />
+		<meta name="generator" content={Astro.generator} />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<title>{title}</title>
+	</head>
+	<body class:list={[bodyClass]}>
+		<slot />
+	</body>
+</html>
+
+<style is:global>
+	html, body {
+		height: 100%;
+	}
+</style>
