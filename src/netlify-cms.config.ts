@@ -11,7 +11,7 @@ const config: CmsConfig = {
   display_url: 'https://tk31.netlify.app',
   media_folder: '/uploads',
   media_library: { name: '' },
-  publish_mode: 'editorial_workflow',
+  publish_mode: 'simple',
   collections: [
     {
       name: 'subjects',
