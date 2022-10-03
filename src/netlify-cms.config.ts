@@ -1,4 +1,44 @@
-import type { CmsConfig } from "netlify-cms-core";
+import type { CmsCollectionFile, CmsConfig } from "netlify-cms-core";
+
+const subjectsConfig: CmsCollectionFile = {
+  name: 'subjects',
+  label: 'Subjects',
+  file: '/src/data/subjects.json',
+  fields: [{
+    label: 'Subjects',
+    name: 'subjects',
+    widget: 'list',
+    fields: [
+      { label: 'Name', name: 'name', widget: 'string', default: "Emmet" }
+    ]}
+  ]
+};
+
+const subjectSetsConfig: CmsCollectionFile = {
+  name: 'subjectSets',
+  label: 'Subject Sets',
+  file: '/src/data/subjectSets.json',
+  fields: [{
+    label: 'Subject Sets',
+    name: 'subjectSets',
+    widget: 'list',
+    fields: [
+      { label: 'Name', name: 'name', widget: 'string' },
+      {
+        label: 'Subject',
+        name: 'subject',
+        widget: 'relation',
+        collection: 'tk31',
+        file: 'subjects',
+        multiple: true,
+        search_fields: ['subjects.*.name'],
+        display_fields: ['subjects.*.name'],
+        value_field: 'subjects.*.name',
+      }
+    ]
+  }]
+};
+
 
 const config: CmsConfig = {
   backend: {
@@ -11,15 +51,16 @@ const config: CmsConfig = {
   display_url: 'https://tk31.netlify.app',
   media_folder: '/uploads',
   media_library: { name: '' },
-  publish_mode: 'simple',
+  local_backend: true,
   collections: [
     {
-      name: 'subjects',
-      label: 'Subjects',
-      folder: 'data/subjects',
-      create: true,
-      fields: [
-        { label: 'Name', name: 'name', widget: 'string' },
+      name: 'tk31',
+      label: 'TK31',
+      extension: 'json',
+      editor: { preview: false },
+      files: [
+        subjectsConfig,
+        subjectSetsConfig
       ]
     }
   ]
