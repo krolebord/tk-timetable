@@ -5,6 +5,7 @@ const config: CmsConfig = {
     name: 'github',
     repo: 'krolebord/tk-timetable',
     branch: 'main',
+    site_domain: 'tk31.netlify.app',
   },
   site_url: 'https://tk31.netlify.app',
   display_url: 'https://tk31.netlify.app',
